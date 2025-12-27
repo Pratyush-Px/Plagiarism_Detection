@@ -22,7 +22,7 @@ This project demonstrates clean program structure, correct use of STL algorithms
 The similarity is computed using the **Jaccard Index**:
 
 \[
-J(A, B) = \frac{|A \cap B|}{|A \cup B|}
+J(A,B)= ∣A∩B∣/∣A∪B∣
 \]
 
 Where:
@@ -62,60 +62,52 @@ The result is reported as a **percentage similarity**.
 - `<iterator>` — inserter adapters  
 
 ---
+## ✅ Strengths
+- Clear separation of concerns
+- (Reading, normalization, tokenization, comparison)
+
+- Correct mathematical model (Jaccard Index)
+
+- Robust edge-case handling (empty union)
+
+- Effective use of STL algorithms
+
+- Readable and maintainable code
+
+## ⚠️ Current Limitations
+- Uses std::set (tree-based, O(log n) insertions)
+
+- Counts common stop-words (the, is, and)
+
+- No stemming or lemmatization
+
+- Uses word-level comparison only (unigrams)
+
+## 🔮 Future Improvements
+- Planned enhancements to make this a 90+ quality project:
+
+- **🔧 Performance & Memory:**
+- Switch to std::unordered_set for faster lookups
+
+- Manual intersection to avoid sorting overhead
+
+- **🧠 Text Processing**
+- Add stop-word filtering
+
+- Implement stemming (e.g., run vs running)
+
+- Support n-grams (bigrams / trigrams) for better plagiarism detection
+
+- **🧵 Modern C++**
+- Use std::string_view (C++17+) to reduce string allocations
 
 ## ▶️ How to Compile and Run
 
 ### Compile
 ```bash
 g++ main.cpp -o check
-Run
-bash
-Copy code
 ./check file1.txt file2.txt
-Example
-bash
-Copy code
-./check note1.txt note2.txt
-Output
-text
-Copy code
-Plagiarism similarity: 56.73 %
-✅ Strengths
-Clear separation of concerns
-(Reading, normalization, tokenization, comparison)
+```
 
-Correct mathematical model (Jaccard Index)
 
-Robust edge-case handling (empty union)
-
-Effective use of STL algorithms
-
-Readable and maintainable code
-
-⚠️ Current Limitations
-Uses std::set (tree-based, O(log n) insertions)
-
-Counts common stop-words (the, is, and)
-
-No stemming or lemmatization
-
-Uses word-level comparison only (unigrams)
-
-🔮 Future Improvements
-Planned enhancements to make this a 90+ quality project:
-
-🔧 Performance & Memory
-Switch to std::unordered_set for faster lookups
-
-Manual intersection to avoid sorting overhead
-
-🧠 Text Processing
-Add stop-word filtering
-
-Implement stemming (e.g., run vs running)
-
-Support n-grams (bigrams / trigrams) for better plagiarism detection
-
-🧵 Modern C++
-Use std::string_view (C++17+) to reduce string allocations
 
