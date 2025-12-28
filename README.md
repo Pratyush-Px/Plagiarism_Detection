@@ -1,7 +1,6 @@
 # 📄 Document Similarity Checker (C++)
 
-A command-line based **document similarity checker** written in **C++**, which computes the similarity between two text files using the **Jaccard Index**.  
-This project demonstrates clean program structure, correct use of STL algorithms, and foundational techniques used in plagiarism detection systems.
+A command-line based **document similarity and plagiarism detection** tool written in **C++**, which compares two text files using weighted **n-gram Jaccard similarity**.
 
 ---
 
@@ -10,8 +9,11 @@ This project demonstrates clean program structure, correct use of STL algorithms
 - Command-line interface (CLI) usage  
 - Reads and processes text files safely  
 - Normalizes text (case folding & punctuation handling)  
-- Tokenizes content into words  
+- Stop-word filtering
+- Tokenizes content into words 
+- Generic n-gram generation (unigram / bigram / trigram) 
 - Uses **Jaccard Similarity** to compute document overlap  
+- Weighted similarity scoring
 - Avoids division-by-zero edge cases  
 - Uses ordered STL containers and algorithms  
 
@@ -48,7 +50,7 @@ The result is reported as a **percentage similarity**.
 5. **Compute intersection and union**
    - Using `std::set_intersection`
    - Using `std::set_union`
-6. **Calculate similarity score**
+6. **Calculate similarity score of unigram bigram and trigram and find the final similarity score**
 
 ---
 
@@ -74,14 +76,14 @@ The result is reported as a **percentage similarity**.
 
 - Readable and maintainable code
 
-## ⚠️ Current Limitations
-- Uses std::set (tree-based, O(log n) insertions)
-
 - Counts common stop-words (the, is, and)
 
-- No stemming or lemmatization
+- Support n-grams (unigrams / bigrams / trigrams) for better plagiarism detection
 
-- Uses word-level comparison only (unigrams)
+## ⚠️ Current Limitations
+- Uses std::set (tree-based, O(log n) set operations)
+
+- No stemming or lemmatization
 
 ## 🔮 Future Improvements
 - Planned enhancements to make this a 90+ quality project:
@@ -92,11 +94,7 @@ The result is reported as a **percentage similarity**.
 - Manual intersection to avoid sorting overhead
 
 - **🧠 Text Processing**
-- Add stop-word filtering
-
 - Implement stemming (e.g., run vs running)
-
-- Support n-grams (bigrams / trigrams) for better plagiarism detection
 
 - **🧵 Modern C++**
 - Use std::string_view (C++17+) to reduce string allocations
